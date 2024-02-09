@@ -1,0 +1,6 @@
+package com.talentreef.interviewquestions.takehome
+
+dependencies {
+    implementation project(':common')
+    // ... more dependencies
+}

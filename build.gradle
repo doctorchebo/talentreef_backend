@@ -1,0 +1,76 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.talentreef'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+	maven {
+		credentials {
+			username System.getenv("NEXUS_USERNAME")
+			password System.getenv("NEXUS_PASSWORD")
+		}
+		url "https://nexus.trdev.co/nexus/content/repositories/releases"
+	}
+}
+
+dependencies {
+	// Spring Boot
+	implementation 'org.springframework.boot:spring-boot-starter'
+
+	// https://mvnrepository.com/artifact/org.springframework/spring-web
+	implementation 'org.springframework:spring-web:5.3.9'
+
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.5.4'
+
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-sleuth
+	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth:3.0.3'
+
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// https://mvnrepository.com/artifact/net.logstash.logback/logstash-logback-encoder
+	implementation 'net.logstash.logback:logstash-logback-encoder:6.6'
+
+	// https://mvnrepository.com/artifact/javax.validation/validation-api
+	implementation 'javax.validation:validation-api:2.0.1.Final'
+
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.5'
+
+	// https://mvnrepository.com/artifact/org.json/json
+	implementation 'org.json:json:20210307'
+
+
+	// https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api
+	implementation 'javax.persistence:javax.persistence-api:2.2'
+
+	// https://mvnrepository.com/artifact/org.projectlombok/lombok
+	compileOnly 'org.projectlombok:lombok:1.18.20'
+	annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+	// https://mvnrepository.com/artifact/org.hibernate/hibernate-annotations
+	implementation 'org.hibernate:hibernate-annotations:3.5.6-Final'
+
+	// Testing
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: "com.vaadin.external.google", module:"android-json"
+	}
+
+	// https://mvnrepository.com/artifact/junit/junit
+	testImplementation 'junit:junit:4.13.2'
+
+	// https://mvnrepository.com/artifact/org.mockito/mockito-core
+	testImplementation 'org.mockito:mockito-core:3.12.4'
+
+}
+
+test {
+	useJUnitPlatform()
+}
