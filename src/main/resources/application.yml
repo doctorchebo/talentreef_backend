@@ -1,10 +1,12 @@
 server:
   port: 9000
 
-spring:
-  profiles:
-    active: prod
-
 logging:
   level:
     root: info
+
+management:
+  endpoint:
+    health:
+      show-detail: always
+      show-components: always
