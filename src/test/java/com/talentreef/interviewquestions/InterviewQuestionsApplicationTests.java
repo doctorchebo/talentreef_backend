@@ -8,8 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 @ContextConfiguration(classes = { InterviewQuestionsApplication.class })
 class InterviewQuestionsApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+  @Test
+  void contextLoads() {
+  }
 
 }
