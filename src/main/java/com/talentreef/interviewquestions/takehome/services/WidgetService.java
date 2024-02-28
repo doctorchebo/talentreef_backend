@@ -13,16 +13,16 @@ import java.util.List;
 @Service
 public class WidgetService {
 
-  private final WidgetRepository WidgetRepository;
+  private final WidgetRepository widgetRepository;
 
   @Autowired
-  private WidgetService(WidgetRepository WidgetRepository) {
-    Assert.notNull(WidgetRepository, "WidgetRepository must not be null");
-    this.WidgetRepository = WidgetRepository;
+  private WidgetService(WidgetRepository widgetRepository) {
+    Assert.notNull(widgetRepository, "widgetRepository must not be null");
+    this.widgetRepository = widgetRepository;
   }
 
   public List<Widget> getAllWidgets() {
-    return WidgetRepository.findAll();
+    return widgetRepository.findAll();
   }
 
 }
