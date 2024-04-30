@@ -1,4 +1,4 @@
-package com.talentreef.interviewquestions;
+package com.talentreef.interviewquestions.takehome.exceptions;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -19,12 +19,12 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
   protected ResponseEntity<Object> handleMethodArgumentNotValid(
       MethodArgumentNotValidException ex, HttpHeaders headers,
       HttpStatusCode status, WebRequest request) {
-    List<String> errorList = ex
-        .getBindingResult()
-        .getFieldErrors()
-        .stream()
-        .map((field) -> field.getField() + ": " + field.getDefaultMessage())
-        .toList();
+      List<String> errorList = ex
+          .getBindingResult()
+          .getFieldErrors()
+          .stream()
+          .map((field) -> field.getField() + ": " + field.getDefaultMessage())
+          .toList();
 
     return ResponseEntity.badRequest().body(errorList);
   }

@@ -11,21 +11,29 @@ import java.util.stream.Collectors;
 @Repository
 public class WidgetRepository {
 
-  private List<Widget> table = new ArrayList<>();
+  private List<Widget> widgets = new ArrayList<>(List.of(
+          Widget.builder().name("name 1").description("description 1").price(10.0).build(),
+          Widget.builder().name("name 2").description("description 2").price(20.0).build(),
+          Widget.builder().name("name 3").description("description 3").price(30.0).build(),
+          Widget.builder().name("name 4").description("description 4").price(40.0).build(),
+          Widget.builder().name("name 5").description("description 5").price(50.0).build(),
+          Widget.builder().name("name 6").description("description 6").price(60.0).build(),
+          Widget.builder().name("name 7").description("description 7").price(70.0).build()
+  ));
 
   public List<Widget> deleteById(String name) {
-    this.table = table.stream()
+    this.widgets = widgets.stream()
                       .filter((Widget widget) -> !name.equals(widget.getName()))
                       .collect(Collectors.toCollection(ArrayList::new));
-    return table;
+    return widgets;
   }
 
   public List<Widget> findAll() {
-    return table;
+    return widgets;
   }
 
   public Optional<Widget> findById(String name) {
-    Optional<Widget> result = table.stream()
+    Optional<Widget> result = widgets.stream()
                                    .filter((Widget widget) -> name.equals(widget.getName()))
                                    .findAny();
     return result;
@@ -33,7 +41,7 @@ public class WidgetRepository {
 
   public Widget save(Widget widget) {
     deleteById(widget.getName());
-    table.add(widget);
+    widgets.add(widget);
     return widget;
   }
 
