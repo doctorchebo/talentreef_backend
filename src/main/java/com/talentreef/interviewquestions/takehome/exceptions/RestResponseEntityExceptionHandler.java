@@ -23,12 +23,6 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
       MethodArgumentNotValidException ex, HttpHeaders headers,
       HttpStatusCode status, WebRequest request) {
       Map<String, String> errorMap = new HashMap<>();
-//      List<String> errorList = ex
-//          .getBindingResult()
-//          .getFieldErrors()
-//          .stream()
-//          .map((field) -> errorMap.put(field.getField(), field.getDefaultMessage()))
-//          .toList();
       for(FieldError field : ex.getBindingResult().getFieldErrors()){
           errorMap.put(field.getField(), field.getDefaultMessage());
       }
