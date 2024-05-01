@@ -31,6 +31,7 @@ public class Widget {
   @Size(min = 5, max = 1000, message = "Description must be between 5 and 1000 characters")
   private String description;
 
+  @NotNull(message = "Price is required")
   @DecimalMin(value = "1.00", message = "Price must be at least 1.00")
   @DecimalMax(value = "20000.00", message = "Price must not exceed 20000.00")
   @Digits(integer = 5, fraction = 2, message = "Price must have at most 5 digits before the decimal point and 2 digits after")
